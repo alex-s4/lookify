@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,4 +42,11 @@ public class SongsApi {
 	{
 		return sserv.getTop10Songs();
 	}
+	
+	@PutMapping("/api/songs/edit/{id}")
+	public Songs updateSong(@PathVariable Long id, Songs updatedSong)
+	{
+		return sserv.updateSong(updatedSong);
+	}
+	
 }

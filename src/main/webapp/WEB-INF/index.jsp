@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Lookify</title>
 </head>
 <body>
-x
+	<h1>Welcome to Lookify!</h1>
+	<a href="/dashboard">Start Looking</a>
 </body>
 </html>
