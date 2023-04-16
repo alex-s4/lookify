@@ -1,21 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isErrorPage="true" %>    
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ page isErrorPage="true" %>   
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Lookify</title>
+<title>Search</title>
 </head>
 <body>
-	<h1>Lookify Premium</h1>
-	<a href="/songs/new">Add Song</a>
-    <a href="/songs/top-ten">Top Songs</a>
-	<table>
+    <h1>Songs by: <c:out value="${searchQuery}"/></h1>
+    <table>
         <tr>
             <th>Name</th>
             <th>Rating</th>
@@ -23,7 +19,7 @@
         </tr>
         <c:forEach var="song" items="${songs}">
             <tr>
-                <td><a href="/songs/${song.getId()}"><c:out value="${song.getSongTitle()}"/></a></td>
+                <td><c:out value="${song.getSongTitle()}"/></td>
                 <td><c:out value="${song.getSongRating()}"/></td>
                 <td>
                     <form action="/songs/${song.getId()}" method="post" class="delete-btn">
@@ -34,6 +30,6 @@
             </tr>
         </c:forEach>
     </table>
-	
+    <a href="/dashboard">back to Dashboard</a>
 </body>
 </html>
