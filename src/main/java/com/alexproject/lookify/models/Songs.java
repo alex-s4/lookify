@@ -12,6 +12,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,11 +32,12 @@ public class Songs {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
 	
-	@Size(min=5)
+	@Size(min=5, message="Should be at least 5 characters")
 	private String songTitle;
 	
-	@Size(min=5)
+	@Size(min=5, message="Should be at least 5 characters")
 	private String songArtist;
+	
 	
 	@Max(10)
 	@Min(1)
