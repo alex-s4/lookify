@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alexproject.lookify.models.Songs;
 import com.alexproject.lookify.services.SongService;
@@ -34,6 +35,7 @@ public class SongsController {
 	{
 		List<Songs> allSongs = sserv.getAllSongs();
 		mv.addAttribute("songs", allSongs);
+		
 		return "dashboard.jsp";
 	}
 	
@@ -87,13 +89,20 @@ public class SongsController {
 	}
 	
 	@GetMapping("/search/{searchArtist}")
-	public String searchByArtist(@PathVariable("searchArtist") String searchArtist,
+	public String searchResults(@PathVariable("searchArtist") String searchArtist,
 			Model mv)
 	{
 		List<Songs> songsByArtist = sserv.getSongByArtist(searchArtist);
 		mv.addAttribute("songs", songsByArtist);
 		mv.addAttribute("searchQuery", searchArtist);
 		return "searchResults.jsp";
+	}
+	
+	@PostMapping("/search")
+	public String searchByArtist(@RequestParam("searchArtist") String searchArtist, Model mv)
+	{
+		System.out.println(searchArtist);
+		return "redirect:/search/"+searchArtist;
 	}
 	
 }

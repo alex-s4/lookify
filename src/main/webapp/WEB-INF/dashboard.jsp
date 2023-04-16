@@ -15,6 +15,10 @@
 	<h1>Lookify Premium</h1>
 	<a href="/songs/new">Add Song</a>
     <a href="/songs/top-ten">Top Songs</a>
+    <form action="/search" method="post">
+        <input type="text" name="searchArtist" id="search">
+        <input type="submit" value="Search">
+    </form>
 	<table>
         <tr>
             <th>Name</th>
